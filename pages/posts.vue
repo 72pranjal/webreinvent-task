@@ -16,7 +16,7 @@
     computed: {
       ...mapState('posts', ['posts'])
     },
-    async created() {
+    async fetch() {
       await this.fetchPosts()
     },
     methods: {

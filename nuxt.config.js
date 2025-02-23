@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'tailwindtest',
+    title: 'Posts from DummyJSON API with Nuxt.js and Tailwind CSS',
     htmlAttrs: {
       lang: 'en'
     },
