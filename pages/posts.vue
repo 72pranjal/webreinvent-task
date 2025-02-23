@@ -16,7 +16,7 @@
     computed: {
       ...mapState('posts', ['posts'])
     },
-    async fetch() {
+    async mounted() {
       await this.fetchPosts()
     },
     methods: {

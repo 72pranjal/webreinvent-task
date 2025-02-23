@@ -1,19 +1,25 @@
 export const state = () => ({
     posts: [],
-    lastFetched: null
+    lastFetch: null
   })
   
   export const mutations = {
     SET_POSTS(state, posts) {
       state.posts = posts
-      state.lastFetched = Date.now()
+      state.lastFetch = new Date().getTime();
+      localStorage.setItem('cachedPosts', JSON.stringify({ posts, lastFetch: state.lastFetch }));
     }
   }
   
   export const actions = {
     async fetchPosts({ state, commit }) {
-      if (state.lastFetched && Date.now() - state.lastFetched < 15 * 60 * 1000) {
-        return
+
+      const now = new Date().getTime();
+      const cachedData = JSON.parse(localStorage.getItem('cachedPosts'));
+
+      if (cachedData && now - cachedData.lastFetch < 900000) {
+        commit('SET_POSTS', cachedData.posts);
+        return;
       }
   
       try {
