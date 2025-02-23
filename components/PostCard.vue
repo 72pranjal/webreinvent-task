@@ -1,19 +1,27 @@
 <template>
-    <div class="post-container">
-        <NuxtLink :to="`/post/${post.id}`" class="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition">
-          <h2 class="text-xl font-semibold">{{ post.title }}</h2>
-          <p class="text-gray-600 mt-2">{{ post.body.substring(0, 100) }}...</p>
-          <p class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">
-            View More About Post →
-          </p>
-        </NuxtLink>
+  <NuxtLink
+    :to="`/post/${post.id}`"
+    class="block p-6 bg-white shadow-lg rounded-xl hover:shadow-xl transition transform hover:-translate-y-1 duration-300"
+  >
+    <h2 class="text-2xl font-bold text-gray-900 leading-tight">
+      {{ post.title }}
+    </h2>
+    <p class="text-gray-600 mt-3">{{ post.body.substring(0, 120) }}...</p>
+
+    <div class="mt-5 flex items-center justify-between">
+      <p
+        class="text-blue-600 hover:text-blue-800 font-semibold flex items-center transition-all duration-200"
+      >
+        Read More →
+      </p>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      post: Object
-    }
-  }
-  </script>
+  </NuxtLink>
+</template>
+
+<script>
+export default {
+  props: {
+    post: Object,
+  },
+};
+</script>
